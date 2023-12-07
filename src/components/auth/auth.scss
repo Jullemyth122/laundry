@@ -1,0 +1,70 @@
+.register-component {
+    font-family: Arial, Helvetica, sans-serif;
+    background: url(../../../public/img/laundry.jpg) 50% 50% / cover no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+
+    .container {
+        background-color: rgba(255, 255, 255, 0.9); /* Use rgba for transparency */
+        padding: 20px;
+        border-radius: 10px; /* Increase border radius for a card-like feel */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Enhance box shadow */
+        text-align: center;
+        width: 350px; /* Adjust the width of the card */
+        
+        img {
+        max-width: 150px; /* Reduce logo size */
+        margin-bottom: 20px; /* Increase space after logo */
+        }
+
+        h1 {
+        font-size: 24px;
+        margin-bottom: 20px; /* Increase space after heading */
+        }
+
+        .input-text {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .login-fill {
+            color: #0056b3;
+        }
+
+        input {
+        width: calc(100%); /* Adjust input width */
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        display: block;
+        box-sizing: border-box; /* Include padding in width calculation */
+        }
+
+        button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        display: block;
+        margin: 15px auto 0;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: #0056b3;
+        }
+        }
+
+        p {
+        margin-top: 15px;
+        font-size: 14px;
+        }
+    }
+}

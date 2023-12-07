@@ -1,56 +1,123 @@
-import React from 'react';
+import gsap from 'gsap';
+import React, { useRef } from 'react';
 
 const About = () => {
+
+    const imgRefs = useRef([])
+    const textRefs = useRef([])
+
+    const handleMouseOver = (m,e) => {
+        console.log(e)
+        m.preventDefault()
+        gsap.to(textRefs.current[e],{
+            "--width":"80%",
+            "--lt":"10%",
+            duration:1.85,
+            ease:'expo.inOut',
+            overwrite:'auto'
+        })
+        gsap.to(imgRefs.current[e],{
+            "--polygon-height":"100%",
+            duration:1.85,
+            scale:1,
+            ease:'expo.inOut',
+            overwrite:'auto'
+        })
+    }
+    
+    const handleMouseLeave = (m,e) => {
+        m.preventDefault()
+        gsap.to(textRefs.current[e],{
+            "--width":"0%",
+            "--lt":"50%",
+            duration:1.85,
+            overwrite:'auto',
+            ease:'expo.inOut'
+        })
+        gsap.to(imgRefs.current[e],{
+            scale:2,
+            "--polygon-height":"0%",
+            duration:1.85,
+            overwrite:'auto',
+            ease:'expo.inOut',
+        })
+    }
+
     return (
-        <section className="min-h-screen bg-gray-100 flex flex-col items-center justify-center py-28">
-            <div className="container mx-auto text-center mb-8">
-                <h1 className="text-3xl font-semibold">About Us</h1>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 px-4 md:px-0">
-                <div className="relative group">
-                    <div className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-4 relative shadow-lg">
-                        <img
-                            src="./img/laundry.jpg"
-                            alt="About Us Image"
-                            className="object-cover w-full h-full transition-transform transform scale-100 group-hover:scale-105 duration-500"
-                        />
+        <section>
+            <div className="about-us about-us-page">
+                <div className="line-gap"></div>
+                <div className="title">
+                    <h1> What about us? </h1>
+                </div>
+                <div className="about-section">
+                    <div className="random-bg">
+                        <div className="cl cl1"></div>
+                        <div className="cl cl2"></div>
+                        <div className="cl cl3"></div>
+                        <div className="cl cl4"></div>
                     </div>
-                    <div className="text-xl font-semibold absolute bottom-0 left-0 bg-white p-2 rounded-tl-lg">
-                        Image 1
+
+                    <div className="grid about-items">
+                        <div className="items" 
+                            onMouseEnter={e => handleMouseOver(e, 0)}
+                            onMouseOut={e => handleMouseLeave(e, 0)}
+                        >
+                            <div className="items-img">
+                                <img ref={ e => imgRefs.current.push(e) } src="./img/laundry.jpg" alt="" />
+                            </div>
+                            <div className="it">
+                                <div className="tx1">
+                                    <h3 ref={ e=> textRefs.current.push(e) }> 1 </h3>
+                                </div>
+                                <div className="tx2">
+                                    <h2> Smooth Delivery </h2>
+                                </div>
+                                <div className="tx3">
+                                    <h5> Fast delivery after clean </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="items" 
+                            onMouseEnter={e => handleMouseOver(e, 1)}
+                            onMouseOut={e => handleMouseLeave(e, 1)}
+                        >
+                            <div className="items-img">
+                                <img ref={ e => imgRefs.current.push(e) } src="./img/laundry2.jpg" alt="" />
+                            </div>
+                            <div className="it">    
+                                <div className="tx1">
+                                    <h3 ref={ e=> textRefs.current.push(e) }> 2 </h3>
+                                </div>
+                                <div className="tx2">
+                                    <h2> Easy to track </h2>
+                                </div>
+                                <div className="tx3">
+                                    <h5> Understable cleaning operation </h5>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="items" 
+                            onMouseEnter={e => handleMouseOver(e, 2)}
+                            onMouseOut={e => handleMouseLeave(e, 2)}
+                        >
+                            <div className="items-img">
+                                <img ref={ e => imgRefs.current.push(e) } src="./img/laundry3.jpg" alt="" />
+                            </div>
+                            <div className="it">
+                                <div className="tx1">
+                                    <h3 ref={ e=> textRefs.current.push(e) }> 3 </h3>
+                                </div>
+                                <div className="tx2">
+                                    <h2> Smooth Transaction </h2>
+                                </div>
+                                <div className="tx3">
+                                    <h5> No hustle transaction payments </h5>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div className="relative group">
-                    <div className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-4 relative shadow-lg">
-                        <img
-                            src="./img/laundry2.jpg"
-                            alt="About Us Image"
-                            className="object-cover w-full h-full transition-transform transform scale-100 group-hover:scale-105 duration-500"
-                        />
-                    </div>
-                    <div className="text-xl font-semibold absolute bottom-0 left-0 bg-white p-2 rounded-tl-lg">
-                        Image 2
-                    </div>
-                </div>
-                <div className="relative group">
-                    <div className="w-full h-64 md:h-96 overflow-hidden rounded-lg mb-4 relative shadow-lg">
-                        <img
-                            src="./img/laundry3.jpg"
-                            alt="About Us Image"
-                            className="object-cover w-full h-full transition-transform transform scale-100 group-hover:scale-105 duration-500"
-                        />
-                    </div>
-                    <div className="text-xl font-semibold absolute bottom-0 left-0 bg-white p-2 rounded-tl-lg">
-                        Image 3
-                    </div>
-                </div>
-            </div>
-            <div className="container mx-auto text-center mt-8 px-4 md:px-0">
-                <p className="text-xl">
-                    Laundry day is a necessity for every household, but it can be such a huge time-sink.
-                </p>
-                <p className="text-xl">
-                    We pick up your dirty clothing from the location of your choice and get it washed at a professional laundromat or dry cleaner near you.
-                </p>
             </div>
         </section>
     );
